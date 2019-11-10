@@ -1,0 +1,12 @@
+<div>
+  <input type="number" class="form-control" [(ngModel)]="firstNumber" placeholder="Enter First Number"/>
+</div>
+<div>
+    <input type="number" class="form-control" [(ngModel)]="secondNumber" placeholder="Enter Second Number"/>
+</div>
+<button class="secondary-btn" id="addition" (click)="getResult('addition')">Addition</button>
+<button class="secondary-btn" (click)="getResult('substraction')">Substraction</button>
+<button class="secondary-btn" (click)="getResult('multiplication')">Multiplication</button>
+<button class="secondary-btn" (click)="getResult('division')">Division</button>
+
+<h3>Result is: {{result}}</h3>
