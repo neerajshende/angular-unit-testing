@@ -11,6 +11,7 @@ export class CommonExamplesComponent implements OnInit {
   result: number;
   firstNumber: number;
   secondNumber: number;
+  userData = [];
 
   constructor(private dataService: DataService) { }
 
@@ -20,6 +21,6 @@ export class CommonExamplesComponent implements OnInit {
   }
 
   getResult(operation) {
-    this.result = this.dataService.performArithmenticOperations(this.firstNumber, this.secondNumber ,operation);
+    this.result = this.dataService.performArithmenticOperations(this.firstNumber, this.secondNumber, operation);
   }
 }

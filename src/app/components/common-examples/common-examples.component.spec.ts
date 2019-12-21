@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
 
 import { CommonExamplesComponent } from './common-examples.component';
 import { DataService } from 'src/app/services/data.service';
@@ -13,10 +13,11 @@ describe('CommonExamplesComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule],
-      declarations: [ CommonExamplesComponent ],
+      declarations: [CommonExamplesComponent],
       providers: [DataService, HttpClient, HttpHandler]
+
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -30,17 +31,17 @@ describe('CommonExamplesComponent', () => {
   });
 
   it('should set the result when getResult method is called', () => {
-    component.firstNumber =12;
+    component.firstNumber = 12;
     component.secondNumber = 13;
     component.getResult('addition');
     expect(component.result).toBe(25);
   });
 
-  it('should invoke the dataService method when button is clicked', () => {
-    component.firstNumber =22;
-    component.secondNumber = 28;
-    let button = fixture.debugElement.nativeElement.querySelector('#addition');
+  it('should set the result of arithmetic operation when button is clicked', () => {
+    component.firstNumber = 22;
+    component.secondNumber = 29;
+    const button = fixture.nativeElement.querySelector("#addition");
     button.click();
-    expect(component.result).toBe(50);
+    expect(component.result).toBe(51);
   });
 });

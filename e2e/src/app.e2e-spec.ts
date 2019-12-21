@@ -13,6 +13,14 @@ describe('workspace-project App', () => {
     expect(page.getTitleText()).toEqual('Welcome to angular-unit-testing!');
   });
 
+
+
+  it('Should redirect to dashboard page when dashboard link is clicked', () => {
+    const link = page.getDashboardLink();
+    link.click();
+    expect(browser.driver.getCurrentUrl()).toContain('/dashboard');
+});
+
   afterEach(async () => {
     // Assert that there are no errors emitted from the browser
     const logs = await browser.manage().logs().get(logging.Type.BROWSER);

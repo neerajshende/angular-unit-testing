@@ -2,16 +2,17 @@ import { TestBed } from '@angular/core/testing';
 
 import { DataService } from './data.service';
 import { HttpClient, HttpHandler } from '@angular/common/http';
-import {Observable, of}     from 'rxjs';
+import { of } from 'rxjs';
+import { async } from 'q';
 
 describe('FacadeService', () => {
   let dataService;
 
   beforeEach(() => TestBed.configureTestingModule({
-    providers: [HttpClient, HttpHandler]
+    providers: [DataService, HttpClient, HttpHandler]
   }));
 
-  beforeEach(()=>{
+  beforeEach(() => {
     dataService = TestBed.get(DataService);
 
   })
@@ -23,12 +24,19 @@ describe('FacadeService', () => {
   it('should invoke http method and return data when getData method is called', () => {
     const httpService = TestBed.get(HttpClient);
     // returned value in order to avoid actual http call
-    spyOn(httpService, "get").and.returnValue(of([{dummyKey: "DummyValue"}]));
+    spyOn(httpService, "get").and.returnValue(of([{ dummyKey: "DummyValue" }]));
     const result = dataService.getData();
     expect(httpService.get).toHaveBeenCalled();
+    expect(result).not.toBeNull();
   });
 
-  it('should call respective operation method and return results, when performArithmenticOperations is called', ()=>{
+  it('Testing Promises', async () => {
+    const result = await dataService.getDataThroghPromise();
+    expect(result).toEqual({ "dummyKey": "dummyValue" });
+
+  });
+
+  it('should call respective operation method and return results, when performArithmenticOperations is called', () => {
     let result;
     spyOn(dataService, 'getAddtion').and.callThrough();
     spyOn(dataService, 'getSubstraction').and.callThrough();

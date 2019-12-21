@@ -25,26 +25,26 @@ describe('DomTestingComponent', () => {
   });
 
   it('should not have the DOM element initially as flag is false', () => {
-    const containerElement = fixture.debugElement.query(By.css('.container'));
+    const containerElement = fixture.nativeElement.querySelector('.container');
     expect(containerElement).toBeNull();
   });
 
   it('should contain dom element when flag is set to true', () => {
     component.isVisible = true;
     fixture.detectChanges();   
-    const containerElement = fixture.debugElement.query(By.css('.container'));
+    const containerElement = fixture.nativeElement.querySelector('.container');
     expect(containerElement).not.toBeNull();
-    expect(containerElement.nativeElement.textContent).toContain('This is DOM testing example!');
+    expect(containerElement.innerText).toContain('This is DOM testing example!');
   });
 
   it('should have toggle button name based on flag', () => {
-    const containerElement = fixture.debugElement.query(By.css('#customBtn'));
+    const buttonElement = fixture.nativeElement.querySelector('#customBtn');
     component.isVisible = false;
     fixture.detectChanges();
-    expect(containerElement.nativeElement.textContent.trim()).toBe('Show');
+    expect(buttonElement.innerText).toBe('Show');
     component.isVisible = true;
     fixture.detectChanges();
-    expect(containerElement.nativeElement.textContent.trim()).toBe('Hide');
+    expect(buttonElement.innerText).toBe('Hide');
   });
 
 });

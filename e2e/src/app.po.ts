@@ -1,11 +1,15 @@
-import { browser, by, element } from 'protractor';
+import { browser, by, element, ElementFinder } from 'protractor';
 
 export class AppPage {
   navigateTo() {
-    return browser.get(browser.baseUrl) as Promise<any>;
+    return browser.get(browser.baseUrl);
   }
 
   getTitleText() {
-    return element(by.css('app-root h1')).getText() as Promise<string>;
+    return element(by.css('app-root h1')).getText();
+  }
+
+  getDashboardLink(): ElementFinder {
+    return element(by.css("#dashboardLink"));
   }
 }

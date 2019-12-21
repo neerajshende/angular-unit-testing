@@ -9,9 +9,9 @@ describe('InputOutputTestingComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ InputOutputTestingComponent ]
+      declarations: [InputOutputTestingComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -25,14 +25,15 @@ describe('InputOutputTestingComponent', () => {
   });
 
   it('should correctly render the passed @Input value', () => {
-    const element = fixture.debugElement.query(By.css('.custom-input'));
     // there shouldn't be any value initially
-    expect(element.nativeElement.textContent.trim()).toBe('');
+    expect(fixture.nativeElement.querySelector('.custom-input').innerText).toBe('');
 
     // setting @Input value and verifying again
     component.inputValue = 'Test Value';
     fixture.detectChanges();
-    expect(element.nativeElement.textContent.trim()).toBe('Test Value');
+    expect(fixture.nativeElement.querySelector('.custom-input').innerText).toBe('Test Value');
+
+
   });
 
   it('should emit the event when button is clicked', () => {

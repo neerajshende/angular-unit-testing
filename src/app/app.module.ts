@@ -15,6 +15,7 @@ import { CommonExamplesComponent } from './components/common-examples/common-exa
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { SampleStructureComponent } from './components/sample-structure/sample-structure.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { HttpClientModule } from '@angular/common/http';
     SignupComponent,
     LoginComponent,
     DashboardComponent,
-    CommonExamplesComponent
+    CommonExamplesComponent,
+    SampleStructureComponent
   ],
   imports: [
     BrowserModule,
